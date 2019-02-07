@@ -42,8 +42,6 @@ import { updateAuth } from "../__actions/auth";
 
 // Pages
 import NotFoundPage from './404'
-import ComponentsPage from '../_pages/Components'
-import ComponentDemos from '../_data/component-demos'
 import LoginPage from '../_pages/Login'
 
 import WebFont from 'webfontloader'
@@ -135,36 +133,9 @@ class App extends React.Component {
     searchResults: []
   }
 
-  componentDidMount() {
-    this.highlightCorrectMenuItem()
-
-    this.props.history.listen(this.highlightCorrectMenuItem)
-  }
-
   toggleCollapsed = () => {
     this.setState({
       collapsed: !this.state.collapsed,
-    })
-  }
-
-  _searchComponents = (e) => {
-    const { value: query } = e.target
-    const results = []
-
-    ComponentDemos.map(compCategory => {
-      if (results.length === 5) return null
- 
-      compCategory.items.map(item => {
-        if (results.length === 5) return null
-
-        if (item.name.toLowerCase().indexOf(query.toLowerCase()) > -1) results.push(item)
-      })
-    })
-
-    this.setState({
-      ...this.state,
-      searchResults: results,
-      searchQuery: query
     })
   }
 
@@ -184,16 +155,6 @@ class App extends React.Component {
 
   _signOut = () => {
     this.props.updateAuth(false)
-  }
-
-  highlightCorrectMenuItem = () => {
-    const { pathname } = window.location
-    const componentPath = pathname.replace("/components/", "")
-
-    this.setState({
-      ...this.state,
-      navSelectedKey: `nav-${componentPath}`
-    })
   }
 
   render() {
@@ -247,21 +208,6 @@ class App extends React.Component {
                       Login
                     </Menu.Item>
                   </SubMenu>
-
-                  {ComponentDemos.map((compCategory, index) =>
-                    <SubMenu
-                      key={`compCategory-${index}`}
-                      title={<span><Icon type={compCategory.icon} /><span>{compCategory.name}</span></span>}
-                    >
-                      {compCategory.items.map((item, i) =>
-                        <Menu.Item key={`nav-${item.path}`}>
-                          <Link to={`/components/${item.path}`}>
-                            {item.name}
-                          </Link>
-                        </Menu.Item>
-                      )}
-                    </SubMenu>
-                  )}
                 </Menu>
               </div>
             </Sider>
@@ -271,8 +217,6 @@ class App extends React.Component {
                 <Switch>
                   <Route path="/" component={HomePageMalibu} exact={true} />
                   <Route path="/la" component={HomePageLA} exact={true} />
-
-                  <Route path="/components" component={ComponentsPage} exact={false} />
 
                   <Route path="*" exact={true} component={NotFoundPage} />
                 </Switch>
@@ -294,7 +238,7 @@ class App extends React.Component {
               <Input
                 placeholder="Search Components"
                 prefix={<Icon type="search" style={{ color: 'rgba(0,0,0,.25)' }} />}
-                onChange={this._searchComponents}
+                onChange={() => true}
                 ref={searchInput => this.searchInput = searchInput}
               />
 
