@@ -29,6 +29,7 @@ import { Modal, Button } from 'antd'
 // Components
 import HomePageMalibu from '../_pages/Home/Home_Malibu'
 import HomePageLA from '../_pages/Home/Home_LA'
+import UsersPage from '../_pages/Data/Users'
 
 import FooterComponent from './Footer'
 import NotificationsComponent from './App/Notifications'
@@ -190,7 +191,11 @@ class App extends React.Component {
                 >
                   <SubMenu
                       key={`compCategory-home`}
-                      title={<span><Icon type='home' /><span>Home</span></span>}
+                      title={
+                        <Link to='/'>
+                          <span><Icon type='home' /><span>Home</span></span>
+                        </Link>
+                      }
                   >
                     <Menu.Item key='nav-/'>
                       <Link to='/'>
@@ -208,6 +213,21 @@ class App extends React.Component {
                       Login
                     </Menu.Item>
                   </SubMenu>
+
+                  <SubMenu
+                      key={`compCategory-data`}
+                      title={
+                        <Link to='/users'>
+                          <span><Icon type='profile' /><span>Data</span></span>
+                        </Link>
+                      }
+                  >
+                    <Menu.Item key='nav-/users'>
+                      <Link to='/users'>
+                        Tables
+                      </Link>
+                    </Menu.Item>
+                  </SubMenu>
                 </Menu>
               </div>
             </Sider>
@@ -217,6 +237,7 @@ class App extends React.Component {
                 <Switch>
                   <Route path="/" component={HomePageMalibu} exact={true} />
                   <Route path="/la" component={HomePageLA} exact={true} />
+                  <Route path="/users" component={UsersPage} exact={true} />
 
                   <Route path="*" exact={true} component={NotFoundPage} />
                 </Switch>

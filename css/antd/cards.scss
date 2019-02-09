@@ -11,6 +11,16 @@
         }
     }
 
+    &.no-padding {
+        div.ant-card-body {
+            padding: 0;
+
+            ul.ant-pagination {
+                margin-right: 24px;
+            }
+        }
+    }
+
     div.ant-card-head {
         border-bottom: 1px solid rgba(239, 240, 251, 1);
     }

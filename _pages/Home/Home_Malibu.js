@@ -2,20 +2,12 @@
 import React from 'react'
 import {
     BrowserRouter as Router,
-    Route,
-    Link,
-    Switch,
-    IndexRoute,
-    Redirect
+    Link
 } from 'react-router-dom'
-import PropTypes from 'prop-types'
-import { instanceOf } from 'prop-types'
 import { compose } from 'redux'
-import { bindActionCreators } from 'redux'
 import { connect } from 'react-redux'
 
 // Networking
-import axios from 'axios'
 import API_URLS from '../../_data/apis'
 
 // Antd
@@ -28,12 +20,11 @@ import { Spin, Progress, message } from 'antd'
 import { Card } from 'antd';
 import { Row, Col } from 'antd';
 import { Avatar } from 'antd';
-import { List, Table, Carousel } from 'antd';
+import { Carousel } from 'antd';
 
 // Charts
 import {
-    AreaChart, Area, XAxis, YAxis, CartesianGrid, Tooltip, ResponsiveContainer,
-    BarChart, Bar, Legend
+    AreaChart, Area, Tooltip, ResponsiveContainer
 } from 'recharts'
 
 // Misc
