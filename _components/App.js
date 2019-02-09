@@ -1,21 +1,13 @@
 // React-related
 import React from "react"
 import {
-  BrowserRouter as Router,
   Route,
   Link,
-  Switch,
-  IndexRoute,
-  Redirect
+  Switch
 } from "react-router-dom"
-import PropTypes from "prop-types"
-import { instanceOf } from "prop-types"
 import { compose } from "redux"
 import { bindActionCreators } from "redux"
 import { connect } from "react-redux"
-
-// Networking
-import axios from "axios"
 
 // Antd
 import { Layout } from "antd"
@@ -23,8 +15,7 @@ const { Header, Content, Sider } = Layout
 import { Menu, Dropdown, Icon } from "antd"
 const SubMenu = Menu.SubMenu;
 import { Form, Input } from "antd"
-import { Badge } from "antd"
-import { Modal, Button } from 'antd'
+import { Modal } from 'antd'
 
 // Components
 import HomePageMalibu from '../_pages/Home/Home_Malibu'
@@ -134,6 +125,12 @@ class App extends React.Component {
     searchResults: []
   }
 
+  componentDidMount() {
+    this.highlightCorrectMenuItem()
+
+    this.props.history.listen(this.highlightCorrectMenuItem)
+  }
+
   toggleCollapsed = () => {
     this.setState({
       collapsed: !this.state.collapsed,
@@ -158,9 +155,18 @@ class App extends React.Component {
     this.props.updateAuth(false)
   }
 
+  highlightCorrectMenuItem = () => {
+    const { pathname } = window.location
+    const componentPath = pathname.replace("/components/", "")
+
+    this.setState({
+      ...this.state,
+      navSelectedKey: `nav-${componentPath}`
+    })
+  }
+
   render() {
-    const { loading, collapsed, searchVisible, searchResults, searchQuery, navSelectedKey } = this.state
-        , { getFieldDecorator } = this.props.form
+    const { collapsed, searchResults, searchQuery, navSelectedKey } = this.state
         , { isAuthenticated } = this.props.auth
 
     if (isAuthenticated)
