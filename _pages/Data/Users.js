@@ -9,7 +9,6 @@ import {
     Divider,
     Tag,
     Card,
-    Alert,
     Avatar,
     Row,
     Col
@@ -74,6 +73,18 @@ const data = [{
     key: '3',
     name: 'Joe Black',
     age: 32,
+    address: 'Sidney No. 1 Lake Park',
+    tags: ['cool', 'teacher'],
+}, {
+    key: '4',
+    name: 'John Smith',
+    age: 23,
+    address: 'Sidney No. 1 Lake Park',
+    tags: ['cool', 'teacher'],
+}, {
+    key: '5',
+    name: 'Jane Doe',
+    age: 43,
     address: 'Sidney No. 1 Lake Park',
     tags: ['cool', 'teacher'],
 }];

@@ -15,7 +15,7 @@
   },
   "author": "Gopher Labs Ltd.",
   "dependencies": {
-    "antd": "^3.5.1",
+    "antd": "^3.13.2",
     "axios": "^0.18.0",
     "babel-plugin-transform-class-properties": "^6.24.1",
     "babel-plugin-transform-object-rest-spread": "^6.26.0",

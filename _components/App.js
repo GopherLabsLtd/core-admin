@@ -21,6 +21,8 @@ import { Modal } from 'antd'
 import HomePageMalibu from '../_pages/Home/Home_Malibu'
 import HomePageLA from '../_pages/Home/Home_LA'
 import UsersPage from '../_pages/Data/Users'
+import TimelinePage from '../_pages/Data/Timeline'
+import EmptyPage from '../_pages/Data/Empty'
 
 import FooterComponent from './Footer'
 import NotificationsComponent from './App/Notifications'
@@ -233,6 +235,12 @@ class App extends React.Component {
                         Tables
                       </Link>
                     </Menu.Item>
+
+                    <Menu.Item key='nav-/timeline'>
+                      <Link to='/timeline'>
+                        Timeline
+                      </Link>
+                    </Menu.Item>
                   </SubMenu>
                 </Menu>
               </div>
@@ -244,6 +252,8 @@ class App extends React.Component {
                   <Route path="/" component={HomePageMalibu} exact={true} />
                   <Route path="/la" component={HomePageLA} exact={true} />
                   <Route path="/users" component={UsersPage} exact={true} />
+                  <Route path="/timeline" component={TimelinePage} exact={true} />
+                  <Route path="/empty" component={EmptyPage} exact={true} />
 
                   <Route path="*" exact={true} component={NotFoundPage} />
                 </Switch>
