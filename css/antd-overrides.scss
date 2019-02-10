@@ -164,16 +164,18 @@ li.ant-dropdown-menu-item.with-anchor {
 .ant-layout-sider-trigger {
     background: #fff;
 
-    i {
-        &::before {
-            color: #333;
-        }
+    svg {
+        fill: #333;
     }
 }
 
 // Menu
 .ant-menu {
     user-select: none;
+
+    li:first-child div {
+        margin-top: 1px;
+    }
 }
 
 // Carousel

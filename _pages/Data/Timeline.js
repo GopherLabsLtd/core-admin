@@ -2,16 +2,7 @@
 import React from "react"
 
 import { Timeline, Icon } from 'antd'
-import {
-    Table,
-    Divider,
-    Tag,
-    Card,
-    Alert,
-    Avatar,
-    Row,
-    Col
-} from 'antd'
+import { Card } from 'antd'
 
 export default () => (
     <Card bordered={false}>

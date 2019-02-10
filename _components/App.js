@@ -23,6 +23,7 @@ import HomePageLA from '../_pages/Home/Home_LA'
 import UsersPage from '../_pages/Data/Users'
 import TimelinePage from '../_pages/Data/Timeline'
 import EmptyPage from '../_pages/Data/Empty'
+import CommunicationPage from '../_pages/Management/Communication'
 
 import FooterComponent from './Footer'
 import NotificationsComponent from './App/Notifications'
@@ -198,6 +199,7 @@ class App extends React.Component {
                   selectedKeys={[navSelectedKey]}
                 >
                   <SubMenu
+                      className="ant-menu-item-selected"
                       key={`compCategory-home`}
                       title={
                         <Link to='/'>
@@ -241,6 +243,39 @@ class App extends React.Component {
                         Timeline
                       </Link>
                     </Menu.Item>
+
+                    <Menu.Item key='nav-/empty'>
+                      <Link to='/empty'>
+                        Empty
+                      </Link>
+                    </Menu.Item>
+                  </SubMenu>
+
+                  <SubMenu
+                      key={`compCategory-management`}
+                      title={
+                        <Link to='/communication'>
+                          <span><Icon type='calendar' /><span>Communication</span></span>
+                        </Link>
+                      }
+                  >
+                    <Menu.Item key='nav-/communication'>
+                      <Link to='/communication'>
+                        Communications
+                      </Link>
+                    </Menu.Item>
+
+                    <Menu.Item key='nav-/timeline'>
+                      <Link to='/timeline'>
+                        Timeline
+                      </Link>
+                    </Menu.Item>
+
+                    <Menu.Item key='nav-/empty'>
+                      <Link to='/empty'>
+                        Empty
+                      </Link>
+                    </Menu.Item>
                   </SubMenu>
                 </Menu>
               </div>
@@ -251,9 +286,14 @@ class App extends React.Component {
                 <Switch>
                   <Route path="/" component={HomePageMalibu} exact={true} />
                   <Route path="/la" component={HomePageLA} exact={true} />
+
+                  {/* Data screens */}
                   <Route path="/users" component={UsersPage} exact={true} />
                   <Route path="/timeline" component={TimelinePage} exact={true} />
                   <Route path="/empty" component={EmptyPage} exact={true} />
+
+                  {/* Management screens */}
+                  <Route path="/communication" component={CommunicationPage} exact={true} />
 
                   <Route path="*" exact={true} component={NotFoundPage} />
                 </Switch>
